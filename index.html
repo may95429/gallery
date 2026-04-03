@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>品牌網站</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand" id="siteName">品牌名稱</div>
+        <nav class="nav">
+          <a href="#about">關於</a>
+          <a href="#portfolio">作品</a>
+          <a href="#contact">聯絡</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <p class="hero-kicker">Google Sheets 輕量後台</p>
+            <h1 id="heroTitle">首頁主標題</h1>
+            <p id="heroSubtitle">首頁副標題</p>
+            <a
+              id="heroButton"
+              class="btn btn-primary"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              >立即諮詢</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-heading">
+            <h2 id="aboutTitle">關於我們</h2>
+            <p id="aboutContent">這裡顯示品牌介紹內容。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light" id="portfolio">
+        <div class="container">
+          <div class="section-heading">
+            <h2>作品展示</h2>
+            <p>以下內容由 Google Sheets 自動讀取產生。</p>
+          </div>
+
+          <div id="portfolioGrid" class="card-grid"></div>
+
+          <div id="emptyState" class="empty-state" hidden>
+            目前尚無可顯示資料。
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-heading">
+            <h2>聯絡方式</h2>
+          </div>
+
+          <div class="contact-card">
+            <p><strong>電話：</strong><span id="contactPhone">-</span></p>
+            <p><strong>LINE：</strong><span id="contactLine">-</span></p>
+            <p><strong>Email：</strong><span id="contactEmail">-</span></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p id="footerText">© 2026 品牌名稱 All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

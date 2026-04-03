@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作品介紹</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="product">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand brand-link" href="./index.html" id="siteName"
+          >品牌名稱</a
+        >
+        <nav class="nav">
+          <a href="./index.html#portfolio">作品</a>
+          <a href="./index.html#contact">聯絡</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <a class="back-link" href="./index.html">← 返回首頁</a>
+
+        <article id="productDetail" class="product-detail" hidden>
+          <div class="product-layout">
+            <div class="product-media">
+              <img id="productImage" src="" alt="" />
+            </div>
+
+            <div class="product-content">
+              <p class="product-category" id="productCategory"></p>
+              <h1 id="productTitle">標題</h1>
+              <p class="product-price" id="productPrice"></p>
+              <p class="product-short" id="productShort"></p>
+
+              <div class="product-actions">
+                <a
+                  id="productAction"
+                  class="btn btn-primary"
+                  href="#"
+                  target="_blank"
+                  rel="noopener"
+                  >立即詢問</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <section class="product-section">
+            <h2>詳細介紹</h2>
+            <div id="productContent" class="rich-content"></div>
+          </section>
+
+          <section class="product-section" id="gallerySection" hidden>
+            <h2>更多圖片</h2>
+            <div id="subImageGrid" class="subimage-grid"></div>
+          </section>
+        </article>
+
+        <div id="productNotFound" class="empty-state" hidden>
+          找不到這筆資料。
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p id="footerText">© 2026 品牌名稱 All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
