@@ -68,7 +68,7 @@ function normalizeItems(rows) {
       image_url: safeText(row.image_url),
       sub_images: safeText(row.sub_images),
       price: safeText(row.price),
-      button_text: safeText(row.button_text) || "查看詳情",
+      button_text: safeText(row.button_text) || "LINE諮詢",
       button_link: safeText(row.button_link),
       status: safeText(row.status).toLowerCase()
     }))
@@ -101,39 +101,144 @@ function applyGlobalSettings(settings) {
 }
 
 function renderHomePage(items) {
+
   const grid = document.getElementById("portfolioGrid");
+
   const emptyState = document.getElementById("emptyState");
+
+  const filterButtons = document.querySelectorAll(
+    ".portfolio-filter button"
+  );
 
   if (!grid) return;
 
-  if (!items.length) {
-    if (emptyState) emptyState.hidden = false;
-    return;
+  let currentFilter = "all";
+
+  function renderItems(filter) {
+
+    let filteredItems = items;
+
+    /* filter */
+
+    if (filter !== "all") {
+
+      filteredItems = items.filter((item) => {
+
+        if (!item.category) return false;
+
+        return item.category.includes(filter);
+
+      });
+
+    }
+
+    /* empty */
+
+    if (!filteredItems.length) {
+
+      grid.innerHTML = "";
+
+      if (emptyState) {
+        emptyState.hidden = false;
+      }
+
+      return;
+
+    }
+
+    if (emptyState) {
+      emptyState.hidden = true;
+    }
+
+    /* render */
+
+    const html = filteredItems
+      .map((item) => {
+
+        return `
+        
+        <article class="portfolio-card">
+
+          <a
+            href="./product.html?slug=${item.slug}"
+            class="portfolio-link"
+          >
+
+            <div class="portfolio-image">
+
+              <img
+                src="${item.image_url}"
+                alt="${item.title}"
+                loading="lazy"
+              />
+
+              <div class="portfolio-overlay">
+                <span>VIEW PROJECT</span>
+              </div>
+
+            </div>
+
+            <div class="portfolio-content">
+
+              <div class="work-info">
+
+                <h3 class="work-title">
+                  ${item.title}
+                </h3>
+
+                <div class="work-meta">
+                  <span class="work-category">
+                    ${item.category}
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </a>
+
+        </article>
+
+        `;
+
+      })
+      .join("");
+
+    grid.innerHTML = html;
+
   }
 
-  const html = items
-    .map((item) => {
-      const detailUrl = `./product.html?slug=${encodeURIComponent(item.slug)}`;
+  /* 初始 */
 
-      return `
-        <article class="card">
-          <div class="card-image">
-            <img src="${escapeHtml(item.image_url)}" alt="${escapeHtml(item.title)}" loading="lazy">
-          </div>
-          <div class="card-body">
-            <p class="card-category">${escapeHtml(item.category)}</p>
-            <h3 class="card-title">${escapeHtml(item.title)}</h3>
-            <p class="card-desc">${escapeHtml(item.short_description)}</p>
-            <div class="card-actions">
-              <a class="btn btn-primary" href="${detailUrl}">查看詳情</a>
-            </div>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
+  renderItems(currentFilter);
 
-  grid.innerHTML = html;
+  /* filter click */
+
+  filterButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      /* active */
+
+      filterButtons.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      /* current */
+
+      currentFilter = button.dataset.filter;
+
+      /* render */
+
+      renderItems(currentFilter);
+
+    });
+
+  });
+
 }
 
 function renderProductPage(items) {
@@ -185,11 +290,21 @@ function renderProductPage(items) {
 }
 
 function renderSubImages(subImagesString) {
-  const gallerySection = document.getElementById("gallerySection");
-  const subImageGrid = document.getElementById("subImageGrid");
+
+  const gallerySection =
+    document.getElementById("gallerySection");
+
+  const subImageGrid =
+    document.getElementById("subImageGrid");
+
+  const productImage =
+    document.getElementById("productImage");
 
   if (!gallerySection || !subImageGrid) return;
+
   if (!subImagesString) return;
+
+  /* split urls */
 
   const urls = subImagesString
     .split("|")
@@ -198,15 +313,84 @@ function renderSubImages(subImagesString) {
 
   if (!urls.length) return;
 
+  /* show gallery */
+
   gallerySection.hidden = false;
+
+  /* render */
+
   subImageGrid.innerHTML = urls
     .map(
-      (url, index) => `
-        <img src="${escapeHtml(url)}" alt="補充圖片 ${index + 1}" loading="lazy">
+      (img, index) => `
+        <img
+          src="${img}"
+          alt="作品圖片 ${index + 1}"
+          class="sub-thumb ${
+            index === 0 ? "active" : ""
+          }"
+          data-image="${img}"
+        />
       `
     )
     .join("");
+
+  /* click switch image */
+
+  const thumbs =
+    document.querySelectorAll(".sub-thumb");
+
+  thumbs.forEach((thumb) => {
+
+    thumb.addEventListener("click", () => {
+
+      /* fade out */
+
+      productImage.style.opacity = 0;
+
+      setTimeout(() => {
+
+        /* switch image */
+
+        productImage.src =
+          thumb.dataset.image;
+
+        /* fade in */
+
+        productImage.style.opacity = 1;
+
+      }, 150);
+
+      /* active */
+
+      thumbs.forEach((t) => {
+        t.classList.remove("active");
+      });
+
+      thumb.classList.add("active");
+
+    });
+
+  });
+
 }
+const thumbs = document.querySelectorAll(".sub-thumb");
+
+thumbs.forEach((thumb) => {
+  thumb.addEventListener("click", () => {
+
+    // 更換主圖
+    productImage.src = thumb.dataset.image;
+
+    // 移除 active
+    thumbs.forEach((t) => {
+      t.classList.remove("active");
+    });
+
+    // 加入 active
+    thumb.classList.add("active");
+
+  });
+});
 
 function formatContent(text) {
   const safe = escapeHtml(text);
