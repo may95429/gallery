@@ -3,85 +3,505 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>品牌網站</title>
+
+    <title>文悅室內設計</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./styles.css" />
   </head>
+
   <body data-page="home">
+    <!-- =========================
+       HEADER
+  ========================= -->
+
     <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand" id="siteName">品牌名稱</div>
+      <div class="header-inner">
+        <div class="brand">文悅室內設計</div>
+
+        <!-- Desktop Nav -->
+
         <nav class="nav">
-          <a href="#about">關於</a>
-          <a href="#portfolio">作品</a>
-          <a href="#contact">聯絡</a>
+          <a href="#about">首頁</a>
+          <a href="#about">公司介紹</a>
+          <a href="#portfolio">作品總覽</a>
+          <a href="#portfolio">設計團隊</a>
+          <a href="#contact">聯絡我們</a>
         </nav>
+
+        <!-- Hamburger -->
+
+        <button class="menu-toggle">☰</button>
+      </div>
+
+      <!-- Mobile Menu -->
+
+      <div class="mobile-menu">
+        <a href="#about">首頁</a>
+        <a href="#about">公司介紹</a>
+        <a href="#about">作品總覽</a>
+        <a href="#portfolio">設計團隊</a>
+        <a href="#contact">聯絡我們</a>
       </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="container hero-inner">
+    <!-- =========================
+       HERO
+  ========================= -->
+
+    <!-- Hero Slider -->
+    <section class="hero">
+      <div class="hero-slider">
+        <!-- Slide 1 -->
+        <div class="hero-slide active">
+          <picture>
+            <source
+              media="(max-width:768px)"
+              srcset="./assets/hero_living_mobile.webp"
+            />
+            <img src="./assets/hero_living_desktop.webp" alt="Living" />
+          </picture>
+
+          <div class="hero-overlay"></div>
+
           <div class="hero-content">
-            <p class="hero-kicker">Google Sheets 輕量後台</p>
-            <h1 id="heroTitle">首頁主標題</h1>
-            <p id="heroSubtitle">首頁副標題</p>
-            <a
-              id="heroButton"
-              class="btn btn-primary"
-              href="#"
-              target="_blank"
-              rel="noopener"
-              >立即諮詢</a
-            >
+            <p class="hero-type">LIVING</p>
+            <h1>靜謐生活空間</h1>
           </div>
         </div>
-      </section>
 
-      <section class="section" id="about">
-        <div class="container">
-          <div class="section-heading">
-            <h2 id="aboutTitle">關於我們</h2>
-            <p id="aboutContent">這裡顯示品牌介紹內容。</p>
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+          <picture>
+            <source
+              media="(max-width:768px)"
+              srcset="./assets/hero_office_mobile.webp"
+            />
+            <img src="./assets/hero_office_desktop.webp" alt="Office" />
+          </picture>
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <p class="hero-type">OFFICE</p>
+            <h1>沉穩現代辦公</h1>
           </div>
         </div>
-      </section>
 
-      <section class="section section-light" id="portfolio">
-        <div class="container">
-          <div class="section-heading">
-            <h2>作品展示</h2>
-            <p>以下內容由 Google Sheets 自動讀取產生。</p>
-          </div>
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+          <picture>
+            <source
+              media="(max-width:768px)"
+              srcset="./assets/hero_office2_mobile.webp"
+            />
+            <img src="./assets/hero_office2_desktop.webp" alt="Office" />
+          </picture>
 
-          <div id="portfolioGrid" class="card-grid"></div>
+          <div class="hero-overlay"></div>
 
-          <div id="emptyState" class="empty-state" hidden>
-            目前尚無可顯示資料。
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="container">
-          <div class="section-heading">
-            <h2>聯絡方式</h2>
-          </div>
-
-          <div class="contact-card">
-            <p><strong>電話：</strong><span id="contactPhone">-</span></p>
-            <p><strong>LINE：</strong><span id="contactLine">-</span></p>
-            <p><strong>Email：</strong><span id="contactEmail">-</span></p>
+          <div class="hero-content">
+            <p class="hero-type">OFFICE</p>
+            <h1>幾何光影辦公室</h1>
           </div>
         </div>
-      </section>
-    </main>
+
+        <!-- Slide 4 -->
+        <div class="hero-slide">
+          <picture>
+            <source
+              media="(max-width:768px)"
+              srcset="./assets/hero_office3_mobile.webp"
+            />
+            <img src="./assets/hero_office3_desktop.webp" alt="Office" />
+          </picture>
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <p class="hero-type">OFFICE</p>
+            <h1>海洋藍石材空間</h1>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="hero-slide">
+          <picture>
+            <source
+              media="(max-width:768px)"
+              srcset="./assets/hero_hotel_mobile.webp"
+            />
+            <img src="./assets/hero_hotel_desktop.webp" alt="Hotel" />
+          </picture>
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <p class="hero-type">HOTEL</p>
+            <h1>明亮精品旅宿</h1>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="hero-slide">
+          <picture>
+            <source
+              media="(max-width:768px)"
+              srcset="./assets/hero_clinic_mobile.webp"
+            />
+            <img src="./assets/hero_clinic_desktop.webp" alt="Clinic" />
+          </picture>
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <p class="hero-type">CLINIC</p>
+            <h1>極簡診療美學</h1>
+          </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="hero-slide">
+          <picture>
+            <source
+              media="(max-width:768px)"
+              srcset="./assets/hero_restaurant_mobile.webp"
+            />
+            <img src="./assets/hero_resturant_desktop.webp" alt="Restaurant" />
+          </picture>
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <p class="hero-type">RESTAURANT</p>
+            <h1>韓式暖橘餐飲空間</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrows -->
+      <button class="hero-arrow hero-prev">&#10094;</button>
+      <button class="hero-arrow hero-next">&#10095;</button>
+    </section>
+    <section class="section about-section" id="about">
+      <div class="section-inner">
+        <!-- top -->
+
+        <div class="about-top">
+          <div class="about-heading">
+            <p class="section-label">ABOUT</p>
+
+            <h2 class="about-main-title">
+              不只是空間設計，<br />
+              而是生活美學的延伸
+            </h2>
+          </div>
+
+          <div class="about-intro">
+            <p>透過光影、材質與留白， 打造兼具溫度與質感的空間體驗。</p>
+          </div>
+        </div>
+
+        <!-- content -->
+
+        <div class="about-grid">
+          <div class="about-left">
+            <p class="about-subtitle">DESIGN PHILOSOPHY</p>
+
+            <h3>
+              以極簡語彙，<br />
+              創造安靜且細膩的生活空間
+            </h3>
+          </div>
+
+          <div class="about-right">
+            <p>
+              文悅室內設計專注於住宅、商業與品牌空間整合，
+              我們相信空間不只是視覺呈現， 更是一種生活方式與情緒的延伸。
+            </p>
+
+            <p>
+              我們重視每一道光影、 每一種材質與每一處比例，
+              讓空間回歸純粹與舒適。
+            </p>
+          </div>
+        </div>
+
+        <!-- stats -->
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <h4 class="counter" data-target="10">0</h4>
+            <span>+</span>
+            <p>YEARS EXPERIENCE</p>
+          </div>
+
+          <div class="about-stat">
+            <h4 class="counter" data-target="120">0</h4>
+            <span>+</span>
+            <p>PROJECTS</p>
+          </div>
+
+          <div class="about-stat">
+            <h4>RESIDENTIAL</h4>
+            <p>& COMMERCIAL</p>
+          </div>
+        </div>
+
+        <!-- image -->
+
+        <div class="about-image-wrap">
+          <div class="about-image">
+            <picture>
+              <source
+                media="(max-width:768px)"
+                srcset="./assets/about-image-mobile.webp"
+              />
+
+              <img src="./assets/about-image-desktop.webp" alt="" />
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       PORTFOLIO
+  ========================= -->
+    <section class="section portfolio-section" id="portfolio">
+      <div class="section-inner">
+        <!-- heading -->
+
+        <div class="portfolio-top">
+          <div>
+            <p class="section-label">SELECTED WORKS</p>
+
+            <h2 class="portfolio-title">空間作品精選</h2>
+          </div>
+
+          <p class="portfolio-desc">
+            透過材質、光影與比例， 創造具有情緒與溫度的空間體驗。
+          </p>
+        </div>
+
+        <!-- filter -->
+        <div class="portfolio-filter">
+          <button class="active" data-filter="all">全部</button>
+
+          <button data-filter="住宅空間">住宅空間</button>
+
+          <button data-filter="商業空間">商業空間</button>
+
+          <button data-filter="深色系">深色系</button>
+
+          <button data-filter="淺色系">淺色系</button>
+        </div>
+
+        <!-- dynamic grid -->
+
+        <div class="portfolio-grid" id="portfolioGrid"></div>
+
+        <!-- empty -->
+
+        <div class="empty-state" id="emptyState" hidden>目前尚無作品資料</div>
+      </div>
+    </section>
+    <!-- =========================
+       CONTACT
+  ========================= -->
+    <section class="section contact-section" id="contact">
+      <div class="section-inner contact-layout">
+        <!-- 左側 -->
+
+        <div class="contact-heading">
+          <p class="contact-label">CONTACT</p>
+
+          <h2 class="contact-title">聯絡方式</h2>
+
+          <p class="contact-desc">
+            歡迎與我們分享您的空間需求， 讓設計回歸生活本質，
+            打造具有溫度與品味的理想空間。
+          </p>
+        </div>
+
+        <!-- 右側 -->
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-name">PHONE</div>
+
+            <div class="contact-value">
+              <a href="tel:0912345678"> 0912-345-678 </a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-name">LINE</div>
+
+            <div class="contact-value">
+              <a href="#"> @yourline </a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-name">EMAIL</div>
+
+            <div class="contact-value">
+              <a href="mailto:hello@email.com"> hello@email.com </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+       FOOTER
+  ========================= -->
 
     <footer class="site-footer">
-      <div class="container">
-        <p id="footerText">© 2026 品牌名稱 All Rights Reserved.</p>
-      </div>
+      <p>© 2026 文悅室內設計 All Rights Reserved.</p>
     </footer>
 
+    <!-- =========================
+       SCRIPT
+  ========================= -->
+
+    <script>
+      /* =========================
+       MOBILE MENU
+    ========================= */
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+      });
+
+      /* 點選 menu 自動關閉 */
+
+      const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+        });
+      });
+
+      /* =========================
+       HERO SLIDER
+    ========================= */
+
+      const slides = document.querySelectorAll(".hero-slide");
+
+      const nextBtn = document.querySelector(".hero-next");
+      const prevBtn = document.querySelector(".hero-prev");
+
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+        });
+
+        slides[index].classList.add("active");
+      }
+
+      function nextSlide() {
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+          currentSlide = 0;
+        }
+
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide--;
+
+        if (currentSlide < 0) {
+          currentSlide = slides.length - 1;
+        }
+
+        showSlide(currentSlide);
+      }
+
+      nextBtn.addEventListener("click", nextSlide);
+      prevBtn.addEventListener("click", prevSlide);
+
+      /* Auto Play */
+
+      setInterval(() => {
+        nextSlide();
+      }, 5000);
+
+      /* =========================
+   ABOUT COUNTER
+========================= */
+
+      const counters = document.querySelectorAll(".counter");
+
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const counter = entry.target;
+
+            const target = +counter.dataset.target;
+
+            if (entry.isIntersecting) {
+              let current = 0;
+
+              const increment = target / 60;
+
+              const updateCounter = () => {
+                current += increment;
+
+                if (current < target) {
+                  counter.innerText = Math.ceil(current);
+
+                  requestAnimationFrame(updateCounter);
+                } else {
+                  counter.innerText = target;
+                }
+              };
+
+              updateCounter();
+            } else {
+              /* 離開畫面重置 */
+
+              counter.innerText = 0;
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+        },
+      );
+
+      counters.forEach((counter) => {
+        counterObserver.observe(counter);
+      });
+
+      /* =========================
+   HEADER SCROLL
+========================= */
+
+      const header = document.querySelector(".site-header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 80) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
     <script src="./app.js"></script>
   </body>
 </html>
