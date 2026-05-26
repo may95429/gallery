@@ -5,17 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>作品介紹</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./product.css" />
   </head>
-  <body data-page="product">
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand brand-link" href="./index.html" id="siteName"
-          >品牌名稱</a
-        >
+  <body data-page="product" class="product-page">
+    <!-- =========================
+       HEADER
+  ========================= -->
+
+    <header class="site-header scrolled">
+      <div class="header-inner">
+        <div class="brand">文悅室內設計</div>
+
+        <!-- Desktop Nav -->
+
         <nav class="nav">
-          <a href="./index.html#portfolio">作品</a>
-          <a href="./index.html#contact">聯絡</a>
+          <a href="./index.html">首頁</a>
+          <a href="./index.html#about">公司介紹</a>
+          <a href="./index.html#portfolio">作品總覽</a>
+          <a href="./index.html#team">設計團隊</a>
+          <a href="./index.html#contact">聯絡我們</a>
         </nav>
+
+        <!-- Hamburger -->
+
+        <button class="menu-toggle">☰</button>
+      </div>
+
+      <!-- Mobile Menu -->
+
+      <div class="mobile-menu">
+        <a href="./index.html">首頁</a>
+        <a href="./index.html#about">公司介紹</a>
+        <a href="./index.html#portfolio">作品總覽</a>
+        <a href="./index.html#team">設計團隊</a>
+        <a href="./index.html#contact">聯絡我們</a>
       </div>
     </header>
 
@@ -26,9 +49,14 @@
         <article id="productDetail" class="product-detail" hidden>
           <div class="product-layout">
             <div class="product-media">
+              <!-- 主圖 -->
               <img id="productImage" src="" alt="" />
-            </div>
 
+              <!-- sub images -->
+              <div id="gallerySection" class="product-thumbnails" hidden>
+                <div id="subImageGrid" class="subimage-grid"></div>
+              </div>
+            </div>
             <div class="product-content">
               <p class="product-category" id="productCategory"></p>
               <h1 id="productTitle">標題</h1>
@@ -52,11 +80,6 @@
             <h2>詳細介紹</h2>
             <div id="productContent" class="rich-content"></div>
           </section>
-
-          <section class="product-section" id="gallerySection" hidden>
-            <h2>更多圖片</h2>
-            <div id="subImageGrid" class="subimage-grid"></div>
-          </section>
         </article>
 
         <div id="productNotFound" class="empty-state" hidden>
@@ -67,10 +90,32 @@
 
     <footer class="site-footer">
       <div class="container">
-        <p id="footerText">© 2026 品牌名稱 All Rights Reserved.</p>
+        <p id="footerText">© 2026 文悅室內設計 All Rights Reserved.</p>
       </div>
     </footer>
 
+    <script>
+      /* =========================
+       MOBILE MENU
+    ========================= */
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+      });
+
+      /* 點選 menu 自動關閉 */
+
+      const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+        });
+      });
+    </script>
     <script src="./app.js"></script>
   </body>
 </html>
